@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML & CSS Tables for Kids</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: #ffe4e1;
+      color: #333;
+      padding: 40px;
+    }
+    .container {
+      background: #fff0f5;
+      border: 4px dashed #ff69b4;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 900px;
+      margin: auto;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+    }
+    h1, h2, h3 {
+      color: #d63384;
+    }
+    button {
+      background-color: #ff69b4;
+      color: white;
+      padding: 10px 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .hidden {
+      display: none;
+      margin-top: 15px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    th, td {
+      border: 2px solid #ffb6c1;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #ffc0cb;
+    }
+    code, pre {
+      background: #fffaf0;
+      border-left: 4px solid #f08080;
+      padding: 10px;
+      margin-top: 10px;
+      display: block;
+      color: #d63384;
+    }
+    .quiz {
+      background-color: #fffacd;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 15px;
+    }
+    label {
+      display: block;
+      margin: 10px 0;
+    }
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+    .score {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: blue;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Let's Learn HTML & CSS Tables!</h1>
+    <p>Tables help us organize data. With HTML, we create the structure. With CSS, we style it to look awesome!</p>
+
+    <h2>📐 Table Sizes</h2>
+    <p>Set table width using the <code>width</code> attribute or CSS property:</p>
+    <pre><code>&lt;table style="width: 50%;"&gt;...&lt;/table&gt;</code></pre>
+
+    <h2>📌 Table Headers</h2>
+    <p>Use <code>&lt;th&gt;</code> for header cells:</p>
+    <pre><code>&lt;tr&gt;
+  &lt;th&gt;Name&lt;/th&gt;
+  &lt;th&gt;Age&lt;/th&gt;
+&lt;/tr&gt;</code></pre>
+
+    <h2>📏 Padding & Spacing</h2>
+    <p>Control spacing with CSS:</p>
+    <pre><code>td {
+  padding: 15px;
+}</code></pre>
+
+    <h2>🧩 Colspan & Rowspan</h2>
+    <p>Merge cells across columns or rows:</p>
+    <pre><code>&lt;td colspan="2"&gt;Merged Cell&lt;/td&gt;
+&lt;td rowspan="2"&gt;Merged Row Cell&lt;/td&gt;</code></pre>
+
+    <h2>🎨 Table Styling</h2>
+    <p>Apply CSS to beautify your tables:</p>
+    <pre><code>table {
+  border: 2px dashed #ff69b4;
+  background-color: #fff0f5;
+}</code></pre>
+
+    <h2>📊 Table Colgroup</h2>
+    <p>Style groups of columns:</p>
+    <pre><code>&lt;colgroup&gt;
+  &lt;col span="2" style="background-color: lavender;"&gt;
+  &lt;col style="background-color: lightblue;"&gt;
+&lt;/colgroup&gt;</code></pre>
+
+    <button onclick="toggleQuiz()">🎯 Take the Quiz</button>
+    <div id="quiz" class="quiz hidden">
+      <h2>🧠 HTML & CSS Tables Quiz</h2>
+      <div id="questions"></div>
+      <button onclick="submitQuiz()">✅ Submit Answers</button>
+      <div id="score" class="score"></div>
+    </div>
+  </div>
+
+  <script>
+    const quizData = [
+      { q: "Which tag creates a table row?", a: "tr", options: ["td", "th", "tr"] },
+      { q: "Which tag is used for table data?", a: "td", options: ["table", "td", "tr"] },
+      { q: "Which tag makes the heading of a table?", a: "th", options: ["th", "td", "caption"] },
+      { q: "Which tag adds a title to the table?", a: "caption", options: ["table", "caption", "thead"] },
+      { q: "Which CSS property changes the inside space of a cell?", a: "padding", options: ["margin", "border", "padding"] },
+      { q: "What does 'border-collapse' do?", a: "Combines borders", options: ["Adds space", "Combines borders", "Changes color"] },
+      { q: "Which property changes the cell background?", a: "background-color", options: ["color", "padding", "background-color"] },
+      { q: "What is used to align text in a table cell?", a: "text-align", options: ["align", "text-align", "justify"] },
+      { q: "Which tag groups rows of the table body?", a: "tbody", options: ["thead", "tfoot", "tbody"] },
+      { q: "Which CSS property gives cells a border?", a: "border", options: ["outline", "margin", "border"] },
+      { q: "Which real-life item is like an HTML table?", a: "Classroom schedule", options: ["Book", "Classroom schedule", "Poster"] },
+      { q: "Why use table headers?", a: "To label columns", options: ["To color rows", "To add images", "To label columns"] },
+      { q: "What makes a row in a table?", a: "tr", options: ["td", "tr", "th"] },
+      { q: "How can you make borders cleaner?", a: "border-collapse", options: ["border-style", "collapse-table", "border-collapse"] },
+      { q: "Which CSS property changes text color?", a: "color", options: ["text", "font", "color"] }
+    ];
+
+    function toggleQuiz() {
+      const quiz = document.getElementById("quiz");
+      const questionsDiv = document.getElementById("questions");
+      quiz.classList.toggle("hidden");
+      if (questionsDiv.children.length === 0) {
+        quizData.forEach((item, index) => {
+          const qDiv = document.createElement("div");
+          qDiv.innerHTML = `<p>${index + 1}. ${item.q}</p>`;
+          item.options.forEach(opt => {
+            const label = document.createElement("label");
+            label.innerHTML = `<input type='radio' name='q${index}' value='${opt}'> ${opt}`;
+            qDiv.appendChild(label);
+          });
+          questionsDiv.appendChild(qDiv);
+        });
+      }
+    }
+
+    function submitQuiz() {
+      let score = 0;
+      quizData.forEach((item, index) => {
+        const answers = document.getElementsByName(`q${index}`);
+        for (let answer of answers) {
+          if (answer.checked && answer.value === item.a) {
+            score++;
+          }
+        }
+      });
+      document.getElementById("score").textContent = `🎉 You got ${score}/15 correct!`;
+    }
+  </script>
+</body>
+</html>
