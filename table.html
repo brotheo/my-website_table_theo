@@ -83,6 +83,23 @@
     <h1>🎉 Let's Learn HTML & CSS Tables!</h1>
     <p>Tables help us organize data. With HTML, we create the structure. With CSS, we style it to look awesome!</p>
 
+    <h2>🏗️ Table Structure & Cells</h2>
+    <p>An HTML table is built using these tags:</p>
+    <pre><code>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Header 1&lt;/th&gt;
+    &lt;th&gt;Header 2&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Cell 1&lt;/td&gt;
+    &lt;td&gt;Cell 2&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+    <p><code>&lt;table&gt;</code>: starts the table<br>
+    <code>&lt;tr&gt;</code>: table row<br>
+    <code>&lt;th&gt;</code>: header cell<br>
+    <code>&lt;td&gt;</code>: regular table cell</p>
+
     <h2>📐 Table Sizes</h2>
     <p>Set table width using the <code>width</code> attribute or CSS property:</p>
     <pre><code>&lt;table style="width: 50%;"&gt;...&lt;/table&gt;</code></pre>
@@ -127,11 +144,11 @@
       <div id="score" class="score"></div>
     </div>
   </div>
-</div> <!-- end of container -->
 
   <footer style="text-align: center; margin-top: 30px; font-size: 1rem; color: #d63384;">
     Developed by <strong>Teacher Theo</strong> 💡
   </footer>
+
   <script>
     const quizData = [
       { q: "Which tag creates a table row?", a: "tr", options: ["td", "th", "tr"] },
@@ -148,7 +165,12 @@
       { q: "Why use table headers?", a: "To label columns", options: ["To color rows", "To add images", "To label columns"] },
       { q: "What makes a row in a table?", a: "tr", options: ["td", "tr", "th"] },
       { q: "How can you make borders cleaner?", a: "border-collapse", options: ["border-style", "collapse-table", "border-collapse"] },
-      { q: "Which CSS property changes text color?", a: "color", options: ["text", "font", "color"] }
+      { q: "Which CSS property changes text color?", a: "color", options: ["text", "font", "color"] },
+      { q: "What tag starts a table?", a: "table", options: ["thead", "tr", "table"] },
+      { q: "Which tag merges table cells horizontally?", a: "colspan", options: ["merge", "rowspan", "colspan"] },
+      { q: "Which tag merges table cells vertically?", a: "rowspan", options: ["rowspan", "colspan", "merge"] },
+      { q: "What is the parent tag for all table content?", a: "table", options: ["html", "div", "table"] },
+      { q: "Which HTML tag groups columns for styling?", a: "colgroup", options: ["column", "colgroup", "group"] }
     ];
 
     function toggleQuiz() {
@@ -179,7 +201,7 @@
           }
         }
       });
-      document.getElementById("score").textContent = `🎉 You got ${score}/15 correct!`;
+      document.getElementById("score").textContent = `🎉 You got ${score}/20 correct!`;
     }
   </script>
 </body>
